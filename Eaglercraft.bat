@@ -85,9 +85,16 @@ goto :eof
 
 :disclaimer
 echo =============================================================
-echo                    EAGLERCRAFT CAMOUFLAGE
+call :colorEcho 08 "                    EAGLERCRAFT CAMOUFLAGE"
 echo                        version 1.0.0
 echo                   Copyright Florian Harbers
 echo  Alle Rechten Voorbehouden - Alleen voor Persoonlijk Gebruik
 echo =============================================================
+goto :eof
+
+:colorEcho
+echo off
+<nul set /p ".=%DEL%" > "%~2"
+findstr /v /a:%1 /R "^$" "%~2" nul
+del "%~2" > nul 2>&1i
 goto :eof
